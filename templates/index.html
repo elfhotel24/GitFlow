@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center mb-5">
+        <h1 class="display-4">Bienvenido al Sistema de Nómina</h1>
+        <p class="lead">Sistema especializado para República Dominicana</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">👥 Gestión de Empleados</h5>
+                <p class="card-text">Administra la información de tus empleados: agregar, editar, eliminar y consultar.</p>
+                <a href="{{ url_for('listar_empleados') }}" class="btn btn-primary">Gestionar Empleados</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">💰 Cálculo de Nóminas</h5>
+                <p class="card-text">Calcula nóminas automáticamente con deducciones AFP, SFS e ISR según normativa RD.</p>
+                <a href="{{ url_for('calcular_nomina') }}" class="btn btn-success">Calcular Nómina</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">📊 Historial de Nóminas</h5>
+                <p class="card-text">Consulta el historial completo de nóminas procesadas en el sistema.</p>
+                <a href="{{ url_for('listar_nominas') }}" class="btn btn-info">Ver Nóminas</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>📈 Información del Sistema</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Deducciones Aplicadas:</h6>
+                        <ul>
+                            <li>AFP: 2.87%</li>
+                            <li>SFS: 3.04%</li>
+                            <li>ISR: Tabla progresiva según normativa</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Características:</h6>
+                        <ul>
+                            <li>Cálculos automáticos</li>
+                            <li>Base de datos SQL Server</li>
+                            <li>Interfaz web responsive</li>
+                            <li>Normativa RD compliant</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

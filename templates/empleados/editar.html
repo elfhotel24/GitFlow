@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-edit me-2"></i>Editar Empleado</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cedula" class="form-label">Cédula *</label>
+                            <input type="text" class="form-control" id="cedula" name="cedula" 
+                                   value="{{ empleado.cedula }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="salario_base" class="form-label">Salario Base (RD$) *</label>
+                            <input type="number" step="0.01" class="form-control" id="salario_base" name="salario_base" 
+                                   value="{{ empleado.salario_base }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" 
+                                   value="{{ empleado.nombre }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="apellido" class="form-label">Apellido *</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" 
+                                   value="{{ empleado.apellido }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="departamento" class="form-label">Departamento *</label>
+                            <select class="form-control" id="departamento" name="departamento" required>
+                                <option value="">Seleccionar departamento</option>
+                                <option value="TI" {% if empleado.departamento == 'TI' %}selected{% endif %}>Tecnología (TI)</option>
+                                <option value="RRHH" {% if empleado.departamento == 'RRHH' %}selected{% endif %}>Recursos Humanos</option>
+                                <option value="Ventas" {% if empleado.departamento == 'Ventas' %}selected{% endif %}>Ventas</option>
+                                <option value="Marketing" {% if empleado.departamento == 'Marketing' %}selected{% endif %}>Marketing</option>
+                                <option value="Finanzas" {% if empleado.departamento == 'Finanzas' %}selected{% endif %}>Finanzas</option>
+                                <option value="Operaciones" {% if empleado.departamento == 'Operaciones' %}selected{% endif %}>Operaciones</option>
+                                <option value="Administración" {% if empleado.departamento == 'Administración' %}selected{% endif %}>Administración</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="puesto" class="form-label">Puesto *</label>
+                            <input type="text" class="form-control" id="puesto" name="puesto" 
+                                   value="{{ empleado.puesto }}" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fecha_contratacion" class="form-label">Fecha de Contratación *</label>
+                            <input type="date" class="form-control" id="fecha_contratacion" name="fecha_contratacion" 
+                                   value="{{ empleado.get_fecha_contratacion_input() }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="estado" class="form-label">Estado *</label>
+                            <select class="form-control" id="estado" name="estado" required>
+                                <option value="Activo" {% if empleado.estado == 'Activo' %}selected{% endif %}>Activo</option>
+                                <option value="Inactivo" {% if empleado.estado == 'Inactivo' %}selected{% endif %}>Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('listar_empleados') }}" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-arrow-left me-1"></i>Volver
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-1"></i>Actualizar Empleado
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

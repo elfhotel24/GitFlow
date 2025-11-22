@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-calculator me-2"></i>Calcular Nómina</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="periodo" class="form-label">Periodo de Pago *</label>
+                        <select class="form-control" id="periodo" name="periodo" required>
+                            <option value="">Seleccionar período</option>
+                            <option value="Enero 2025">Enero 2025</option>
+                            <option value="Febrero 2025">Febrero 2025</option>
+                            <option value="Marzo 2025">Marzo 2025</option>
+                            <option value="Abril 2025">Abril 2025</option>
+                            <option value="Mayo 2025">Mayo 2025</option>
+                            <option value="Junio 2025">Junio 2025</option>
+                            <option value="Julio 2025">Julio 2025</option>
+                            <option value="Agosto 2025">Agosto 2025</option>
+                            <option value="Septiembre 2025">Septiembre 2025</option>
+                            <option value="Octubre 2025">Octubre 2025</option>
+                            <option value="Noviembre 2025">Noviembre 2025</option>
+                            <option value="Diciembre 2025">Diciembre 2025</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="fecha_pago" class="form-label">Fecha de Pago *</label>
+                        <input type="date" class="form-control" id="fecha_pago" name="fecha_pago" required>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-info-circle me-2"></i>Deducciones que se aplicarán:</h6>
+                        <ul class="mb-0">
+                            <li><strong>AFP:</strong> 2.87% del salario bruto</li>
+                            <li><strong>SFS:</strong> 3.04% del salario bruto</li>
+                            <li><strong>ISR:</strong> Según tabla progresiva RD 2024</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('listar_nominas') }}" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times me-1"></i>Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-calculator me-1"></i>Calcular Nómina
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
